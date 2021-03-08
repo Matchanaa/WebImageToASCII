@@ -22,7 +22,7 @@ class App extends Component {
   checkMimeType = (files) => {
     const types = ['image/png', 'image/jpeg', 'image/bmp']; 
     if (types.every(type => files[0].type !== type)) { 
-      toast.error(files[0].type + ' is not a supported format'); 
+      toast.error(files[0].type + ' is not a supported format.'); 
       return false;
     }
     return true;
@@ -41,7 +41,7 @@ class App extends Component {
   checkFileSize = (files) => {
     let size = 4000000;
     if (files[0].size >= size) {
-      toast.error(files[0].type + 'is too large, please pick a smaller file (4Mb or less).');
+      toast.error(files[0].type + ' is too large, please pick a smaller file (4MB or less).');
       return false;
     }
     return true;    
@@ -77,38 +77,15 @@ class App extends Component {
     //Displays a success or fail message depending on API response.
     }).then(res => { 
       this.setState({ ascii : res.data });
-      toast.success('Upload succeeded');
+      toast.success('Upload successful!');
     }).catch(() => { 
-      toast.error('Upload failed');
+      toast.error('Upload failed.');
     });
   }
 
+  //Writes the string contained in ascii to the clipboard. In one line, this time.
   onClickCopy = () => {
-    //Selects contents of the renderfont element, which contains the ASCII. 
-    var element = document.getElementsByClassName("renderfont");
-    if (window.getSelection && document.createRange) { // IE 9 and non-IE
-
-      //selects full text portion of the element.
-      var range = document.createRange();
-      range.selectNodeContents(element[0]);
-      var band = window.getSelection();
-      band.removeAllRanges();
-      band.addRange(range);
-    }
-    else if (document.body.createTextRange) { // IE < 9
-      var textRange = document.body.createTextRange();
-      textRange.moveToElementText(element);
-      textRange.select();
-    }
-    //Adds selection to clipboard.
-    document.execCommand("copy");
-
-    //Clears selection.
-    if (window.getSelection) {window.getSelection().removeAllRanges();}
-    else if (document.selection) {document.selection.empty();}
-
-    //Displays a success message.
-    toast.success('Copy successful');
+    navigator.clipboard.writeText(this.state.ascii).then(() => { toast.success('Copy successful!') });
   }
 
   //Renders the webpage
