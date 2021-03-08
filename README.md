@@ -11,6 +11,7 @@ This project was based upon my previous ASCIIGenerator project, found at https:/
 "ASCII characters are selected based on the relative luminances of a subset of the printable ASCII. Percentage 'Opacity' (for lack of a better term) was found by calculating the percentage of a character's 8x16 pixels space was taken up by the character's pixels. This 'Opacity', which ranged from 0% for space to 33.59% for @, was mapped proportionally to the full 0-255 range of luminance to get a relative luminance for each character. This allows for characters to be selected appropriately for their luminance, corrected for uneven differences in character luminances. (The difference in luminance between space and - is significantly greater than the difference between n and r, for example.)"
 "The calculation for relative luminance, (0.375 * Red) + (0.5 * Green) + (0.125 * Blue) is an approximation of (0.2126 * R) + (0.7152 * G) + (0.0722 * B), a reflection of how much certain light colours are perceived by the eye."
 
+<pre>
                         OOOOMMMM&&&&&&&&&&&&MMMMOOOO                        
                         OOOOMMMM&&&&&&&&&&&&MMMMOOOO                        
                 OOOOMMMM{{{{~~~~~~~~zzzz{{{{{{{{{{{{MMMMOOOO                
@@ -39,5 +40,5 @@ MMMMMMMMVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV{{{{{{{{....MMMMMMMM
     MMMMOOOOMMMMVVVVVVVVVVVVVVVVVVVVVVVVVVVV{{{{~~~~~~~~::::$$$$OOOOMMMM    
             MMMMOOOOMMMMMMMM&&&&&&&&&&&&&&&&MMMMMMMMOOOOOOOOMMMM            
             MMMMOOOOMMMMMMMM&&&&&&&&&&&&&&&&MMMMMMMMOOOOOOOOMMMM            
-
+</pre>
 Date Created: 07/03/21 Last Updated: 07/03/21 Matt Kanumilli
