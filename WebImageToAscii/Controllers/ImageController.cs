@@ -48,7 +48,7 @@ namespace WebImageToAscii.Controllers
       //Checks whether the image is a supported extension using ExtensionChecks service.
       var file = formData.Files[0];
       if (!_extensionChecks.IsImage(file.FileName)) 
-        return BadRequest($"Unsupported file type");
+        return BadRequest("Unsupported file type");
 
       //Asynchronously adds the file to a memory stream.
       var imageStream = new MemoryStream();

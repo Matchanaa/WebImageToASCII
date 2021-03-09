@@ -9,8 +9,8 @@ import './App.css';
 class App extends Component {
 
   //Sets the initial state.
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       selectedFile: null,
       loaded: 0,
@@ -37,11 +37,11 @@ class App extends Component {
     return true;
   }
 
-  //Checks files to make sure they do not exceed 4Mb.
+  //Checks files to make sure they do not exceed 4MB.
   checkFileSize = (files) => {
     let size = 4000000;
     if (files[0].size >= size) {
-      toast.error(files[0].type + ' is too large, please pick a smaller file (4MB or less).');
+      toast.error(files[0].type + ' is too large, please pick a smaller file (' + size/1000000 + 'MB or less).');
       return false;
     }
     return true;    
