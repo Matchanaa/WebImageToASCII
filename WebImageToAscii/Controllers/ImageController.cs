@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
@@ -55,7 +56,16 @@ namespace WebImageToAscii.Controllers
       await file.CopyToAsync(imageStream);
 
       //Converts the file to a Bitmap object and resizes the image using the Resize Image Service. 
-      var image = new Bitmap(imageStream);
+      Bitmap image;
+      try
+      {
+        image = new Bitmap(imageStream);
+      }
+      catch (ArgumentException)
+      {
+        return BadRequest("Unsupported file type");
+      }
+
       var resizedImage = _resizeImage.Resize(image);
 
       //Converts the resized image to ASCII using the ImageConverter service.
