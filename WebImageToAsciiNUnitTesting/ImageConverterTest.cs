@@ -1,10 +1,5 @@
 ﻿using NUnit.Framework;
-using Moq;
-using System.Collections.Generic;
-using WebImageToAscii.Services;
 using System.Drawing;
-using System.IO;
-using System;
 
 namespace WebImageToAsciiNUnitTesting
 {
